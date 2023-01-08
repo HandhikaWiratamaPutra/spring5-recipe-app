@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
@@ -77,6 +78,15 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         UnitOfMeasure dashUom = dashSpoonUomOptional.get();
         UnitOfMeasure pintUom = pintUomOptional.get();
         UnitOfMeasure cupUom = cupUomOptional.get();
+
+        //dummyHWP
+        Set<Category> categoryStartedwithAOptional = categoryRepository.findByDescriptionStartedWithA("A%");
+
+        if(categoryStartedwithAOptional == null){
+            throw new RuntimeException("Expected categoryStartedwithAOptional Not Found");
+        } else {
+            categoryStartedwithAOptional.iterator().forEachRemaining(category -> System.out.println("description Category yang start dengan A : " + category.getDescription()));
+        }
 
         //get Categories
         Optional<Category> americanCategoryOptional = categoryRepository.findByDescription("American");
