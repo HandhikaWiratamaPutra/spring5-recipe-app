@@ -25,7 +25,7 @@ public class UnitOfMeasureRepositoryIT {
     }
 
     @Test
-    @DirtiesContext
+//    @DirtiesContext       //untuk mencegah perubahan data ke database, padahal cuma transaksi test
     public void findByDescription() {
         Optional<UnitOfMeasure> uomOptional = unitOfMeasureRepository.findByDescription("Teaspoon");
 
