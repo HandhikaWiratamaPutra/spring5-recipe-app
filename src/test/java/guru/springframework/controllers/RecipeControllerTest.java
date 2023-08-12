@@ -12,7 +12,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
@@ -23,7 +22,7 @@ public class RecipeControllerTest {
     @Mock
     RecipeService recipeService;
 
-    RecipeController recipeController;
+    RecipeController controller;
 
     MockMvc mockMvc;
 
@@ -31,14 +30,15 @@ public class RecipeControllerTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        recipeController = new RecipeController(recipeService);
-        mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
+        controller = new RecipeController(recipeService);
+        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
     @Test
     public void testGetRecipe() throws Exception {
+
         Recipe recipe = new Recipe();
-        recipe.setId(1l);
+        recipe.setId(1L);
 
         when(recipeService.findById(anyLong())).thenReturn(recipe);
 
