@@ -1,7 +1,7 @@
 package guru.springframework.controllers;
 
 import guru.springframework.domain.Recipe;
-import guru.springframework.services.RecipeServiceImpl;
+import guru.springframework.services.RecipeService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -26,7 +26,7 @@ public class IndexControllerTest {
     IndexController controller;
 
     @Mock
-    RecipeServiceImpl recipeService;
+    RecipeService recipeService;
 
     @Mock
     Model model;

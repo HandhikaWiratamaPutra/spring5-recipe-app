@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
-public class UnitOfMeasureServiceImpl implements UnitOfMeasureService{
+public class UnitOfMeasureServiceImpl implements UnitOfMeasureService {
     private final UnitOfMeasureRepository unitOfMeasureRepository;
     private final UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureToUnitOfMeasureCommand;
 
@@ -28,8 +28,9 @@ public class UnitOfMeasureServiceImpl implements UnitOfMeasureService{
 //        return unitOfMeasureCommands;
 
         return StreamSupport.stream(unitOfMeasureRepository.findAll()
-                .spliterator(),false)
-                .map(unitOfMeasure -> unitOfMeasureToUnitOfMeasureCommand.convert(unitOfMeasure))
+                .spliterator(), false)
+                .map(unitOfMeasureToUnitOfMeasureCommand::convert)
+//                .map(unitOfMeasure -> unitOfMeasureToUnitOfMeasureCommand.convert(unitOfMeasure))
                 .collect(Collectors.toSet());
     }
 }
